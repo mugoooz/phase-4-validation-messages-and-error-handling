@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 function MovieForm() {
+  const [errors, setErrors] = useState([])
   const [formData, setFormData] = useState({
     title: "",
     year: new Date().getFullYear(),
@@ -22,9 +23,7 @@ function MovieForm() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((newMovie) => console.log(newMovie));
+    }).then((response) => console.log(response));
   }
 
   function handleChange(e) {
